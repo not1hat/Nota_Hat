@@ -1,0 +1,135 @@
+@keyframes scale{
+    0% {
+        transform: translate(-50%) scale(0.1);
+        }
+    100%{
+        transform: translate(-50% -50%) scale(1);
+        }
+}
+
+@keyframes scale-1{
+    0% {
+        transform: translate(-50%) scale(4);
+        }
+    100%{
+        transform: translate(-50% -50%) scale(1);
+        }
+}
+
+body{
+    background-color:#A7D129;
+}
+
+#circle{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+
+    background-color:#f9f97100;
+    border: solid 1px #f9f97195;
+
+    z-index: 1;
+    pointer-events: none;
+    animation: scale-1 0.5s ease-in-out;
+}
+
+h2{
+    font-size: 20px;
+    position: fixed;
+    z-index: 2;
+    color:#dedede;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    text-shadow: 0px 0px 30px rgba(0, 0, 0, 255.599);
+    pointer-events:none;
+    transform-style: preserve-3d;
+    letter-spacing: 5px;
+    z-index:2;
+
+    animation: scale 0.5s ease-in-out;
+}
+
+h4{
+    font-size: 10px;
+    position: fixed;
+    z-index: 2;
+    color:#dedede;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    text-shadow: 0px 0px 15px rgba(0, 0, 0, 255.599);
+    pointer-events:none;
+    transform-style: preserve-3d;
+    letter-spacing: 5px;
+    z-index:2;
+
+    animation: scale 0.5s ease-in-out;
+}
+
+h1{
+    font-size: 200px;
+    margin-left:70px;
+    margin-top:85px;
+    transform-origin: center center;
+    transform: translate(-50%, -50%) rotate(-90deg) rotate(0deg);
+    z-index:-1;
+    position:relative;
+}
+
+#black{
+    position:fixed;
+    top:0px;
+    left:0;
+    z-index:1;
+    pointer-events:none;
+}
+
+
+.six {
+    width: 200px;
+    height: 173.3px;
+    rotate:90deg;
+    background-color: #A7D129;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+.box-container {
+    display: grid;
+    grid-template-columns: repeat(19, 100px);
+    gap: 0;
+    justify-content: center;
+    margin: 0 auto;
+    position: fixed;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: transparent;
+}
+
+
+h1:hover{
+    color:rgb(255, 255, 255);
+    transition: all 0.2s ease;
+}
+
+.six:hover{
+    background-color: #c8f936;
+    transition: all 0.1s ease;
+    cursor:pointer;
+}
+
+.six:nth-child(odd) {
+    transform: translateY(100px); 
+}
+
+ .six:nth-child(odd):first-child {
+    transform: none;
+}
