@@ -61,3 +61,20 @@ function onWindowResize() {
 }
 
 scene.background = new THREE.Color(0x101010);
+
+// zoomin
+
+const images = document.querySelectorAll(".pics_1 img");
+const lightbox = document.getElementById("zoomin");
+const lightboxImg = document.getElementById("zoomin-img");
+
+images.forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    lightboxImg.src = img.src;
+  });
+});
+
+lightbox.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
