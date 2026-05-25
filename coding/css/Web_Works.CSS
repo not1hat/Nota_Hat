@@ -1,0 +1,565 @@
+/* =========================================
+   1. 动画关键帧
+========================================= */
+
+@keyframes Left_1 {
+
+    0% {
+        transform:
+            translate(-50vw, 80vh)
+            rotate(-15deg)
+            scale(0.1);
+    }
+
+    100% {
+        transform:
+            translate(var(--move-x, 0rem), var(--move-y, 0rem))
+            rotate(-15deg)
+            scale(1);
+    }
+}
+
+@keyframes Left_2 {
+
+    0% {
+        transform:
+            translate(50vw, -80vh)
+            rotate(10deg)
+            scale(0.1);
+    }
+
+    100% {
+        transform:
+            translate(var(--move-x, 0rem), var(--move-y, 0rem))
+            rotate(10deg)
+            scale(1);
+    }
+}
+
+@keyframes Left_3 {
+
+    0% {
+        transform:
+            translate(-80vw, -50vh)
+            rotate(95deg)
+            scale(0.1);
+    }
+
+    100% {
+        transform:
+            translate(var(--move-x, 0rem), var(--move-y, 0rem))
+            rotate(95deg)
+            scale(1);
+    }
+}
+
+@keyframes moving {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes pop {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(5vh)
+            scale(0.1);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+@keyframes line {
+
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+/* =========================================
+   2. 全局基础样式
+========================================= */
+
+html,
+body {
+
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background-color: #00000045;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link,
+a:visited {
+    color: #c8f936;
+}
+
+
+
+
+
+/* =========================================
+   3. 顶部导航栏
+========================================= */
+
+.container-top {
+
+    position: fixed;
+
+    top: 3vh;
+    left: 2vw;
+
+    display: flex;
+
+    gap: 3vw;
+
+    z-index: 100;
+
+    animation: pop 1s;
+}
+
+
+/* =========================================
+   4. 导航按钮
+========================================= */
+
+.top {
+
+    font-size:
+        clamp(0.75rem, 1vw, 1rem);
+
+    font-weight: bold;
+
+    background-color: #f4f4f4;
+
+    border-radius: 1.5rem;
+
+    padding:
+        0.75rem 2.125rem;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 0.625rem rgba(255,255,255,0.18),
+        0 0.625rem 1.75rem rgba(0,0,0,0.45),
+        0 0 2.8rem rgba(255,255,255,0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.top:hover {
+
+    transform:
+        translateY(-0.2rem)
+        scale(1.2);
+
+    box-shadow:
+        0 0 1.25rem rgba(255,255,255,0.28),
+        0 1rem 2.8rem rgba(0,0,0,0.55),
+        0 0 4.4rem rgba(255,255,255,0.16);
+}
+
+.top a {
+    color: #0f0f0f;
+}
+
+
+
+
+
+/* =========================================
+   5. 右下角标题
+========================================= */
+
+.title {
+
+    font-size:
+        clamp(1rem, 2vw, 2rem);
+
+    color: #f4f4f4;
+
+    position: fixed;
+
+    right: 3vw;
+    bottom: 3vh;
+
+    z-index: 100;
+
+    animation: pop 1s;
+
+    text-shadow:
+        0 0 0.75rem rgba(255,255,255,0.25),
+        0 0 2.2rem rgba(0,0,0,0.9);
+}
+
+
+
+
+
+/* =========================================
+   6. 第一屏
+========================================= */
+
+.page-1 {
+
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    z-index: 2;
+}
+
+
+
+/* =========================================
+   7. 中央等边三角形
+========================================= */
+
+.triangle {
+
+    --triangle-size: clamp(10.6rem, 18.6vw, 20rem);
+    --triangle-height: calc(var(--triangle-size) * 0.866);
+    --triangle-line: 0.06rem;
+    --label-gap: 1rem;
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: var(--triangle-size);
+    height: var(--triangle-height);
+
+    transform: translate(-50%, -50%);
+
+    z-index: 40;
+
+    pointer-events: none;
+}
+
+.Line_left,
+.Line_right,
+.Line_bottom {
+
+    position: absolute;
+
+    width: var(--triangle-size);
+    height: var(--triangle-line);
+
+    background-color: #c8f936;
+
+    box-shadow:
+        0 0 1rem rgba(200,249,54,0.4),
+        0 0 2.5rem rgba(200,249,54,0.2);
+}
+
+/* -----------------------------------------
+   底边
+----------------------------------------- */
+
+.Line_bottom {
+
+    left: 0;
+    bottom: 0;
+}
+
+/* -----------------------------------------
+   左边
+----------------------------------------- */
+
+.Line_left {
+
+    left: 0;
+    bottom: 0;
+
+    transform-origin: left center;
+
+    transform:
+        rotate(-60deg);
+}
+
+/* -----------------------------------------
+   右边
+----------------------------------------- */
+
+.Line_right {
+
+    right: 0;
+    bottom: 0;
+
+    transform-origin: right center;
+
+    transform:
+        rotate(60deg);
+}
+
+
+
+
+
+/* =========================================
+   8. 三角形外侧分类文字
+   文字与线保持约 3rem 距离
+========================================= */
+
+.triangle p {
+    position: absolute;
+
+    margin: 0;
+
+    color: #c8f936;
+
+    font-size: clamp(0.7rem, 1vw, 1.2rem);
+
+    font-weight: bold;
+
+    text-shadow:
+        0 0 1rem rgba(200,249,54,0.45),
+        0 0 2.2rem rgba(0,0,0,0.95);
+
+    pointer-events: auto;
+    white-space: nowrap;
+}
+
+/* 左边文字：在线外侧，距离约 3rem */
+.Photography {
+    left: calc(30% - 1.5rem);
+    top: 25%;
+
+    transform:
+        translate(-15%, -120%)
+        rotate(-60deg);
+}
+
+/* 右边文字：在线外侧，距离约 3rem */
+.Videography {
+    right: calc(25% - 1.5rem);
+    top: 55%;
+
+    transform:
+        translate(80%, 200%)
+        rotate(60deg);
+}
+
+/* 底边文字：在底边下方，距离约 3rem */
+.Graphic {
+    left: 0;
+    bottom: -1.5rem;
+
+    transform: none;
+}
+
+
+/* =========================================
+   9. 三条绿色横幅通用设置
+========================================= */
+
+#box_1,
+#box_2,
+#box_3 {
+
+    --move-x: 0rem;
+    --move-y: 0rem;
+
+    background-color: #c8f936;
+
+    position: absolute;
+
+    display: flex;
+
+    align-items: center;
+
+    width: 150vw;
+
+    left: -25vw;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    will-change:
+        transform,
+        opacity,
+        filter;
+
+    z-index: 5;
+}
+
+
+
+
+
+/* =========================================
+   10. Photography 横幅：大
+========================================= */
+
+#box_1 {
+
+    --bar-height: 20vh;
+    --text-size: 31vh;
+
+    top: 10vh;
+
+    height: var(--bar-height);
+
+    transform:
+        translate(var(--move-x), var(--move-y))
+        rotate(-15deg);
+
+    animation:
+        Left_1 2.2s ease forwards;
+}
+
+#box_1 .Ju {
+    font-size: var(--text-size);
+}
+
+
+
+
+
+/* =========================================
+   11. Graphic 横幅：中
+========================================= */
+
+#box_2 {
+
+    --bar-height: 15vh;
+    --text-size: 23vh;
+
+    top: 80vh;
+
+    height: var(--bar-height);
+
+    transform:
+        translate(var(--move-x), var(--move-y))
+        rotate(10deg);
+
+    animation:
+        Left_2 1.5s ease forwards;
+}
+
+#box_2 .Ju {
+    font-size: var(--text-size);
+}
+
+
+
+
+
+/* =========================================
+   12. Videography 横幅：小
+========================================= */
+
+#box_3 {
+
+    --bar-height: 14vh;
+    --text-size: 21.5vh;
+
+    top: 44vh;
+    left: 15vw;
+
+    height: var(--bar-height);
+
+    transform:
+        translate(var(--move-x), var(--move-y))
+        rotate(95deg);
+
+    animation:
+        Left_3 0.9s ease forwards;
+}
+
+#box_3 .Ju {
+    font-size: var(--text-size);
+}
+
+
+
+
+
+/* =========================================
+   13. 滚动文字通用设置
+========================================= */
+
+.Ju {
+
+    color: #101010;
+
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    line-height: 0.72;
+
+    font-weight: 900;
+
+    transform:
+        translateY(-0.02em);
+}
+
+.scroll_1,
+.scroll_2,
+.scroll_3 {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    width: max-content;
+    height: 100%;
+
+    animation:
+        moving 15s linear infinite;
+}

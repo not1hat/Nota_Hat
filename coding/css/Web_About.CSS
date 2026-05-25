@@ -1,0 +1,378 @@
+/* =========================================
+   1. 动画关键帧
+========================================= */
+
+@keyframes moving {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes pop {
+    0% {
+        opacity: 0;
+        transform: translateY(5vh) scale(0.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes Left_1 {
+    0% {
+        transform:
+            translate(-50vw, -50vh)
+            rotate(80deg)
+            scale(0.1);
+    }
+
+    100% {
+        transform:
+            translate(var(--move-x, 0rem), var(--move-y, 0rem))
+            rotate(80deg)
+            scale(1);
+    }
+}
+
+@keyframes Left_2 {
+    0% {
+        transform:
+            translate(50vw, 0vh)
+            rotate(-50deg)
+            scale(0.1);
+    }
+
+    100% {
+        transform:
+            translate(var(--move-x, 0rem), var(--move-y, 0rem))
+            rotate(-50deg)
+            scale(1);
+    }
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes circleGlow {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   2. 全局基础样式
+========================================= */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* =========================================
+   3. 顶部导航栏
+========================================= */
+
+.container-top {
+
+    position: fixed;
+
+    top: 3vh;
+    left: 2vw;
+
+    display: flex;
+
+    gap: 3vw;
+
+    z-index: 100;
+
+    animation: pop 1s;
+}
+
+.top {
+    font-size: clamp(0.75rem, 1vw, 1rem);
+
+    font-weight: bold;
+
+    background-color: #f4f4f4;
+
+    border-radius: 1.5rem;
+
+    padding: 0.75rem 2.125rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 0.625rem rgba(255,255,255,0.18),
+        0 0.625rem 1.75rem rgba(0,0,0,0.45),
+        0 0 2.8rem rgba(255,255,255,0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.top:hover {
+    transform: translateY(-0.2rem) scale(1.2);
+
+    box-shadow:
+        0 0 1.25rem rgba(255,255,255,0.28),
+        0 1rem 2.8rem rgba(0,0,0,0.55),
+        0 0 4.4rem rgba(255,255,255,0.16);
+}
+
+.top a {
+    color: #0f0f0f;
+}
+
+
+/* =========================================
+   4. 页面标题
+========================================= */
+
+.title {
+    font-size: clamp(1rem, 2vw, 2rem);
+
+    color: #f4f4f4;
+
+    position: fixed;
+
+    right: 3vw;
+    bottom: 3vh;
+
+    z-index: 100;
+
+    animation: pop 1s;
+
+}
+
+
+/* =========================================
+   5. 中心圆形视觉
+========================================= */
+
+.circle {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: clamp(22rem, 45vw, 34rem);
+    height: clamp(22rem, 45vw, 34rem);
+
+    border-radius: 50%;
+
+    border: solid 0.06rem #c8f936;
+
+    z-index: 1;
+
+    animation: opacity 0.7s ease-in-out;
+}
+
+.circle-b {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: clamp(26rem, 52vw, 40rem);
+    height: clamp(26rem, 52vw, 40rem);
+
+    background-color: #c8f936;
+
+    border-radius: 50%;
+
+    z-index: 0;
+
+    box-shadow:
+        0 0 0.6rem 3rem #101010,
+        inset 0 0 3rem 5.5rem #101010;
+
+    animation: circleGlow 1.5s ease;
+}
+
+
+/* =========================================
+   6. 联系方式文字
+========================================= */
+
+p.contact {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    margin: 0;
+
+    z-index: 20;
+
+    color: #101010;
+
+    font-size: clamp(0.75rem, 1.1vw, 1rem);
+
+    letter-spacing: 0.28rem;
+    line-height: 1.5;
+
+    text-align: left;
+
+    text-shadow:
+        0 0 1.8rem rgba(0, 0, 0, 0.9);
+
+    pointer-events: none;
+
+    animation: opacity 0.8s ease;
+}
+
+
+/* =========================================
+   7. 滚动条通用设置
+========================================= */
+
+#box_1,
+#box_2 {
+    --move-x: 0rem;
+    --move-y: 0rem;
+
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+
+    background-color: #c8f936;
+
+    width: 150vw;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    will-change:
+        transform,
+        opacity,
+        filter;
+
+    z-index: 5;
+}
+
+
+/* =========================================
+   8. 第一条滚动条
+========================================= */
+
+#box_1 {
+    --bar-height: 18vh;
+    --text-size: 28vh;
+
+    top: 28vh;
+    left: -55vw;
+
+    height: var(--bar-height);
+
+    transform:
+        translate(var(--move-x), var(--move-y))
+        rotate(80deg);
+
+    animation: Left_1 1.5s ease forwards;
+}
+
+#box_1 .Ju {
+    font-size: var(--text-size);
+}
+
+
+/* =========================================
+   9. 第二条滚动条
+========================================= */
+
+#box_2 {
+    --bar-height: 13vh;
+    --text-size: 20vh;
+
+    top: 46vh;
+    left: 5vw;
+
+    height: var(--bar-height);
+
+    transform:
+        translate(var(--move-x), var(--move-y))
+        rotate(-50deg);
+
+    animation: Left_2 1.5s ease forwards;
+}
+
+#box_2 .Ju {
+    font-size: var(--text-size);
+}
+
+
+/* =========================================
+   10. 滚动文字通用设置
+========================================= */
+
+.Ju {
+    color: #101010;
+
+    margin: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    line-height: 0.72;
+
+    font-weight: 900;
+
+    transform: translateY(-0.02em);
+}
+
+.scroll_1,
+.scroll_2 {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: max-content;
+    height: 100%;
+
+    animation: moving 15s linear infinite;
+}

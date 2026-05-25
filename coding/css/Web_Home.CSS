@@ -1,0 +1,371 @@
+/* =========================
+        Web_Home.css
+========================= */
+
+/* =========================
+        ANIMATIONS
+========================= */
+
+@keyframes moving {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes pop {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(5vh)
+            scale(0.1);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+@keyframes zoomIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.1);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+}
+
+/* =========================
+        GLOBAL
+========================= */
+
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+/* =========================
+        TOP NAV
+========================= */
+
+.container-top {
+
+    position: fixed;
+
+    top: 3vh;
+    left: 2vw;
+
+    display: flex;
+
+    gap: 3vw;
+
+    z-index: 100;
+
+    animation: pop 1s;
+}
+
+.top {
+
+    padding:
+        12px 34px;
+
+    border-radius: 24px;
+
+    background: #f4f4f4;
+
+    font-size:
+        clamp(12px, 1vw, 16px);
+
+    font-weight: bold;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    box-shadow:
+        0 0 10px rgba(255,255,255,0.15),
+        0 8px 24px rgba(0,0,0,0.45),
+        0 0 30px rgba(255,255,255,0.08);
+}
+
+.top:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.15);
+
+    box-shadow:
+        0 0 14px rgba(255,255,255,0.2),
+        0 12px 32px rgba(0,0,0,0.5),
+        0 0 40px rgba(255,255,255,0.12);
+}
+
+.top a {
+
+    color: #111;
+
+    text-decoration: none;
+}
+
+/* =========================
+        TITLE
+========================= */
+
+.title {
+
+    position: fixed;
+
+    right: 3vw;
+    bottom: 3vh;
+
+    z-index: 100;
+
+    color: #f4f4f4;
+
+    font-size:
+        clamp(1rem, 2vw, 2rem);
+
+    animation: pop 1s;
+
+}
+
+/* =========================
+        PAGE
+========================= */
+
+.page-1 {
+
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+/* =========================
+        CROSS
+========================= */
+
+.cross_1,
+.cross_2 {
+
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    background: #c8f936;
+
+    z-index: 5;
+
+    transform:
+        translate(-50%, -50%);
+
+    animation: zoomIn 1s;
+
+    box-shadow:
+        0 0 10px rgba(200,249,54,0.35),
+        0 0 24px rgba(200,249,54,0.15);
+}
+
+.cross_1 {
+
+    width: 50vw;
+    height: 1px;
+}
+
+.cross_2 {
+
+    width: 1px;
+    height: 30vh;
+}
+
+/* =========================
+        TEXT
+========================= */
+
+.Hi,
+.Well {
+
+    position: absolute;
+
+    color: #c8f936;
+
+    font-size:
+        clamp(1.2rem, 2.5vw, 2.5rem);
+
+    font-weight: bold;
+
+    white-space: nowrap;
+
+    z-index: 20;
+
+    text-shadow:
+        0 0 10px rgba(200,249,54,0.25),
+        0 0 35px rgba(0,0,0,0.9);
+
+    opacity: 0;
+
+    will-change:
+        transform;
+}
+
+.Hi {
+
+    top: 40%;
+    left: 30%;
+
+    transform:
+        translate(-50%, -50%);
+}
+
+.Well {
+
+    top: 60%;
+    left: 70%;
+
+    transform:
+        translate(-50%, -50%);
+}
+
+/* =========================
+        BANNERS
+========================= */
+
+.banner {
+
+    position: absolute;
+
+    left: -25vw;
+
+    width: 150vw;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    background: #c8f936;
+
+    white-space: nowrap;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+/* =========================
+        BANNER POSITION
+========================= */
+
+#box_1 {
+
+    top: 15vh;
+    height: 16vw;
+}
+
+#box_2 {
+
+    top: 35vh;
+    height: 11vw;
+}
+
+#box_3 {
+
+    top: 10vh;
+    height: 16vw;
+}
+
+#box_4 {
+
+    top: 75vh;
+    height: 8vw;
+}
+
+/* =========================
+        SCROLL TEXT
+========================= */
+
+.scroll {
+
+    display: flex;
+
+    width: max-content;
+
+    animation:
+        moving 15s linear infinite;
+
+    transform: translateZ(0);
+}
+
+.Ju {
+
+    color: #101010;
+
+    line-height: 0.72;
+}
+
+#box_1 .Ju,
+#box_3 .Ju {
+
+    font-size: 22vw;
+}
+
+#box_2 .Ju {
+
+    font-size: 15vw;
+}
+
+#box_4 .Ju {
+
+    font-size: 11.5vw;
+}
