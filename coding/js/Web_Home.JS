@@ -1,14 +1,20 @@
-w// =========================
+// =========================
 //      Web_Home.js
 // =========================
 
+console.log("Web_Home.JS loaded");
+
 import * as THREE from 'https://unpkg.com/three@0.128.0/build/three.module.js';
+
+console.log("Web_Home.JS loaded");
+console.log(THREE);
 
 /* =========================
         THREE BACKGROUND
 ========================= */
 
 const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x101010);
 
 const camera = new THREE.PerspectiveCamera(
     85,

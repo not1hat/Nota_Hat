@@ -28,9 +28,6 @@ body {
     padding: 0;
 
     width: 100%;
-    height: 100%;
-
-    overflow: hidden;
 
     background-color: #00000045;
 
@@ -149,4 +146,33 @@ a:visited {
     z-index: 100;
 
     animation: pop 1s;
+}
+
+.photo-frame {
+    width: 90%;
+    max-width: 1400px;
+    margin: 22vh auto 15vh auto;
+}
+
+.photo-strip {
+    column-count: 3;
+    column-gap: 1.2rem;
+}
+
+.photo-strip img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 1.2rem;
+    break-inside: avoid;
+}
+
+.apple{
+    width: 100vw;
+    max-width: none;
+
+    margin-left: 50%;
+    transform: translateX(-50%);
+
+    column-span: all;
 }
